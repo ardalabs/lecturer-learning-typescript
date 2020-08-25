@@ -6,6 +6,6 @@ export class MokletLearn {
   }
 
   readData(): void { 
-    
+    console.log("Learning to read data")
   }
 }
