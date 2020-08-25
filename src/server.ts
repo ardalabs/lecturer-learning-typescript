@@ -4,4 +4,8 @@ export class MokletLearn {
   constructor() { 
     
   }
+
+  readData(): void { 
+    
+  }
 }
