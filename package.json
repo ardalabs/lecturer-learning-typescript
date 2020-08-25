@@ -1,0 +1,43 @@
+{
+  "name": "learn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/server.js",
+  "scripts": {
+    "start": "npm run serve",
+    "build": "npm run build-ts",
+    "serve": "node dist/server.js",
+    "sonarlint": "sonarlint --src 'src/**'",
+    "watch-ts": "tsc -w",
+    "watch-node": "nodemon dist/server.js",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"Sass,TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-sass\" \"npm run watch-ts\" \"npm run watch-node\"",
+    "test": "mocha -r ts-node/register tests/**/*.spec.ts",
+    "coverage": "nyc npm run test",
+    "watch-test": "npm run test -- --watchAll",
+    "build-ts": "tsc ",
+    "lint": "tslint -p tsconfig.json -c tslint.json --fix",
+    "copy-static-assets": "ts-node src/copyStaticAsset.ts",
+    "debug": "npm run build && npm run watch-debug",
+    "serve-debug": "nodemon --inspect dist/server.js",
+    "watch-debug": "concurrently -k -p \"[{name}]\" -n \"Sass,TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-sass\" \"npm run watch-ts\" \"npm run serve-debug\""
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "author": "",
+  "license": "ISC",
+  "_moduleAliases": {
+    "@core": "dist/core",
+    "@util": "dist/util",
+    "@kernel": "dist/kernel"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "mocha": "^6.2.0",
+    "nyc": "^14.1.1",
+    "sonarlint": "^1.1.0",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.9.6"
+  }
+}
